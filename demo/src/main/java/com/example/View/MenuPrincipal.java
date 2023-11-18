@@ -9,23 +9,34 @@ public class MenuPrincipal {
     private static JPanel jPanel;
     private static JFrame jframe;
     private static JButton button1;
+    private static JButton button2;
+    private static JButton button3;
+    private static JButton button4;
 
     public static void main(String[] args) {
         CriaTrem panelCriarTrem = new CriaTrem();
         jframe = instanciaTela();
         jframe.setVisible(true);
 
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        button1.addActionListener(e -> {
                 jPanel.removeAll(); // Remove todos os componentes do painel atual
                 jPanel.add(panelCriarTrem.instanciaTela()); // Adiciona o novo painel à janela
                 jPanel.revalidate(); // Atualiza o layout do painel
                 jPanel.repaint(); // Redesenha o painel
                 jframe.setTitle("Criar trem");
+            
+        });
+        
+        button4.addActionListener(a -> {
+            int option = JOptionPane.showConfirmDialog(jframe, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                System.exit(0);
             }
         });
+    
     }
+    
+    
 
     public static JFrame instanciaTela() {
         jframe = new JFrame("Home");
@@ -54,8 +65,9 @@ public class MenuPrincipal {
         JLabel labelImagem = new JLabel(new ImageIcon(image));
 
         button1 = new JButton("Criar trem");
-        JButton button2 = new JButton("Desfazer trem");
-        JButton button3 = new JButton("Listar trens");
+        button2 = new JButton("Desfazer trem");
+        button3 = new JButton("Listar trens");
+        button4 = new JButton("Sair");
 
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -75,16 +87,21 @@ public class MenuPrincipal {
         gbc.gridy = 3;
         panelPrincipal.add(button3, gbc);
 
+        gbc.gridy = 4; 
+        panelPrincipal.add(button4, gbc);
+
         jPanel.add(panelPrincipal);
 
         // Configura todos os botões com o mesmo tamanho
         Dimension buttonSize = new Dimension(button1.getPreferredSize());
         button2.setPreferredSize(buttonSize);
         button3.setPreferredSize(buttonSize);
+        button4.setPreferredSize(buttonSize);
 
         button1.setBackground(new Color(99, 98, 98));
         button2.setBackground(new Color(99, 98, 98));
         button3.setBackground(new Color(99, 98, 98));
+        button4.setBackground(new Color(99, 98, 98));
 
         button1.setBorderPainted(false);
         button1.setFocusPainted(false);
@@ -94,6 +111,9 @@ public class MenuPrincipal {
 
         button3.setBorderPainted(false);
         button3.setFocusPainted(false);
+        
+        button4.setBorderPainted((false));
+        button4.setFocusCycleRoot(false);
 
         jframe.add(jPanel);
         return jframe;
