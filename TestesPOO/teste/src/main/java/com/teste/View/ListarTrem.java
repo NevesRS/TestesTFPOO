@@ -14,7 +14,7 @@ public class ListarTrem extends JPanel {
         setLayout(new BorderLayout()); // BorderLayout para o JScrollPane
 
         JPanel contentPanel = new JPanel(new GridBagLayout()); // Painel para o conteúdo com GridBagLayout
-        contentPanel.setBackground(new Color(99, 98, 98));
+        contentPanel.setBackground(new Color(63, 55, 55));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.NORTH;
         gbc.gridx = 0;
@@ -26,7 +26,7 @@ public class ListarTrem extends JPanel {
             containerTrem.setMinimumSize(new Dimension(900, 45));
             containerTrem.setPreferredSize(new Dimension(900, 45));
             containerTrem.setBorder(new EmptyBorder(5, 10, 5, 10));
-            containerTrem.setBackground(new Color(99, 98, 98));
+            containerTrem.setBackground(new Color(63, 55, 55));
 
             // Cria um novo JPanel para conter os componentes
             JPanel innerPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
@@ -73,7 +73,7 @@ public class ListarTrem extends JPanel {
                         messagePanel.add(Box.createVerticalGlue());
                         messagePanel.add(horizontalBox);
                         messagePanel.add(Box.createVerticalGlue());
-                        messagePanel.setBackground(new Color(99, 98, 98));
+                        messagePanel.setBackground(new Color(63, 55, 55));
 
                         contentPanel.add(messagePanel, gbc);
                         revalidate(); // Atualiza o layout do ListarTrem

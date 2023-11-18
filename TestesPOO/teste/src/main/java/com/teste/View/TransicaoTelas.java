@@ -13,7 +13,7 @@ public class TransicaoTelas extends JFrame {
         ImageIcon icon = new ImageIcon("TestesPOO\\teste\\src\\main\\java\\com\\teste\\Images\\TremBase.png");
         setIconImage(icon.getImage());
 
-        setTitle("Exemplo de Transição de Telas");
+        setTitle("Gerenciador de Trens");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 600);
         setResizable(false);
