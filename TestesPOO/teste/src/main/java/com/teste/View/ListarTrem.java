@@ -7,25 +7,29 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ListarTrem extends JPanel {
+    private int trensDeletados = 0; // Variável para contar os trens deletados
+    private int quantidadeTrens = 20; // getQtdTrens;
+
     public ListarTrem() {
         setLayout(new BorderLayout()); // BorderLayout para o JScrollPane
 
-        JPanel contentPanel = new JPanel(); // Painel para o conteúdo
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS)); // BoxLayout para a disposição vertical
+        JPanel contentPanel = new JPanel(new GridBagLayout()); // Painel para o conteúdo com GridBagLayout
+        contentPanel.setBackground(new Color(99, 98, 98));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.NORTH;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
 
         // Aqui você pode ter um loop para adicionar contêineres para cada trem
-        for (int i = 1; i <= 20/* NUMERO DE TRENS */; i++) {
-            if(i < 1){
-                
-            }else{
-            JPanel containerTrem = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            containerTrem.setMinimumSize(new Dimension(900, 40));
-            containerTrem.setPreferredSize(new Dimension(900, 40));
+        for (int i = 1; i <= quantidadeTrens /* NUMERO DE TRENS */; i++) {
+            JPanel containerTrem = new JPanel(new FlowLayout(FlowLayout.LEADING));
+            containerTrem.setMinimumSize(new Dimension(900, 45));
+            containerTrem.setPreferredSize(new Dimension(900, 45));
             containerTrem.setBorder(new EmptyBorder(5, 10, 5, 10));
             containerTrem.setBackground(new Color(99, 98, 98));
 
             // Cria um novo JPanel para conter os componentes
-            JPanel innerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            JPanel innerPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
             innerPanel.setPreferredSize(new Dimension(800, 45)); // Define o tamanho para 900x30
             innerPanel.setMaximumSize(new Dimension(800, 40));
             innerPanel.setMinimumSize(new Dimension(800, 40));
@@ -48,12 +52,33 @@ public class ListarTrem extends JPanel {
             labelLixeira.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    // Executa a lógica para excluir o trem correspondente ao clicar na lixeira
-                    // Chamar método do programa para excluir o trem com o ID 'idTrem'
-                    // excluirTrem(idTrem);
-                    containerTrem.setVisible(false); // Oculta o container do trem
-                    revalidate(); // Atualiza o layout
+                    containerTrem.remove(innerPanel); // Oculta o container do trem
+                    trensDeletados++; // Incrementa o contador de trens deletados
+                    contentPanel.remove(containerTrem); // Remove o containerTrem do contentPanel
+                    contentPanel.revalidate(); // Revalida o layout do contentPanel
+                    revalidate(); // Atualiza o layout do ListarTrem
                     repaint(); // Redesenha o painel
+                    if (getTrensDeletados() >= quantidadeTrens) {
+                        JLabel mensagem = new JLabel("Não há mais trens disponíveis");
+                        mensagem.setHorizontalAlignment(JLabel.CENTER);
+                        mensagem.setForeground(Color.RED);
+
+                        Box horizontalBox = Box.createHorizontalBox();
+                        horizontalBox.add(Box.createHorizontalGlue());
+                        horizontalBox.add(mensagem);
+                        horizontalBox.add(Box.createHorizontalGlue());
+
+                        JPanel messagePanel = new JPanel();
+                        messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
+                        messagePanel.add(Box.createVerticalGlue());
+                        messagePanel.add(horizontalBox);
+                        messagePanel.add(Box.createVerticalGlue());
+                        messagePanel.setBackground(new Color(99, 98, 98));
+
+                        contentPanel.add(messagePanel, gbc);
+                        revalidate(); // Atualiza o layout do ListarTrem
+                        repaint(); // Redesenha o painel
+                    }
                 }
             });
 
@@ -67,7 +92,8 @@ public class ListarTrem extends JPanel {
             innerPanel.add(labelLixeira);
 
             containerTrem.add(innerPanel);
-            contentPanel.add(containerTrem); // Adiciona o container do trem ao painel de conteúdo
+            contentPanel.add(containerTrem, gbc); // Adiciona o container do trem ao painel de conteúdo
+            gbc.gridy++; // Incrementa a coordenada Y para o próximo trem
         }
 
         JScrollPane scrollPane = new JScrollPane(contentPanel); // JScrollPane para o conteúdo
@@ -76,6 +102,9 @@ public class ListarTrem extends JPanel {
                                                                                          // horizontal
 
         add(scrollPane, BorderLayout.CENTER); // Adiciona o JScrollPane ao painel principal
-            }
+    }
+
+    public int getTrensDeletados() {
+        return trensDeletados;
     }
 }
