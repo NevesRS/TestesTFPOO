@@ -6,10 +6,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPrincipal {
+    private static JPanel jPanel;
+    private static JFrame jframe;
+    private static JButton button1;
+
     public static void main(String[] args) {
         CriaTrem panelCriarTrem = new CriaTrem();
-        
-        JFrame jframe = new JFrame("Home");
+        jframe = instanciaTela();
+        jframe.setVisible(true);
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.removeAll(); // Remove todos os componentes do painel atual
+                jPanel.add(panelCriarTrem.instanciaTela()); // Adiciona o novo painel à janela
+                jPanel.revalidate(); // Atualiza o layout do painel
+                jPanel.repaint(); // Redesenha o painel
+                jframe.setTitle("Criar trem");
+            }
+        });
+    }
+
+    public static JFrame instanciaTela() {
+        jframe = new JFrame("Home");
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setSize(900, 600);
         jframe.setLocationRelativeTo(null);
@@ -21,7 +40,7 @@ public class MenuPrincipal {
         // Definir o ícone para o JFrame
         jframe.setIconImage(icon.getImage());
 
-        JPanel jPanel = new JPanel(new FlowLayout()); // Usando FlowLayout para o jPanel principal
+        jPanel = new JPanel(new FlowLayout()); // Usando FlowLayout para o jPanel principal
         jPanel.setBackground(new Color(63, 55, 55));
         jPanel.setPreferredSize(new Dimension(900, 600));
 
@@ -34,7 +53,7 @@ public class MenuPrincipal {
         Image image = imageIcon.getImage();
         JLabel labelImagem = new JLabel(new ImageIcon(image));
 
-        JButton button1 = new JButton("Criar trem");
+        button1 = new JButton("Criar trem");
         JButton button2 = new JButton("Desfazer trem");
         JButton button3 = new JButton("Listar trens");
 
@@ -76,19 +95,7 @@ public class MenuPrincipal {
         button3.setBorderPainted(false);
         button3.setFocusPainted(false);
 
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jPanel.removeAll(); // Remove todos os componentes do painel atual
-                jPanel.add(panelCriarTrem.instanciaTela()); // Adiciona o novo painel à janela
-                jPanel.revalidate(); // Atualiza o layout do painel
-                jPanel.repaint(); // Redesenha o painel
-                jframe.pack(); // Redimensiona o JFrame para o novo conteúdo
-            }
-        });
-
         jframe.add(jPanel);
-        jframe.pack();
-        jframe.setVisible(true);
+        return jframe;
     }
 }
