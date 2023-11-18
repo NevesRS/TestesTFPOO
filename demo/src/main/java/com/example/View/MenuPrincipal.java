@@ -2,8 +2,6 @@ package com.example.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuPrincipal {
     private static JPanel jPanel;
@@ -35,8 +33,6 @@ public class MenuPrincipal {
         });
     
     }
-    
-    
 
     public static JFrame instanciaTela() {
         jframe = new JFrame("Home");
@@ -66,7 +62,7 @@ public class MenuPrincipal {
         JLabel labelImagem = new JLabel(new ImageIcon(image));
 
         button1 = new JButton("Criar trem");
-        button2 = new JButton("Desfazer trem");
+        button2 = new JButton("Editar trem");
         button3 = new JButton("Listar trens");
         button4 = new JButton("Sair");
 
@@ -93,28 +89,39 @@ public class MenuPrincipal {
 
         jPanel.add(panelPrincipal);
 
-        // Configura todos os botões com o mesmo tamanho
-        Dimension buttonSize = new Dimension(button1.getPreferredSize());
-        button2.setPreferredSize(buttonSize);
-        button3.setPreferredSize(buttonSize);
-        button4.setPreferredSize(buttonSize);
+        button1.setPreferredSize(new Dimension(200, 25));
+        button2.setPreferredSize(new Dimension(200, 25));
+        button3.setPreferredSize(new Dimension(200, 25));
+        button4.setPreferredSize(new Dimension(200, 25));
 
-        button1.setBackground(new Color(99, 98, 98));
-        button2.setBackground(new Color(99, 98, 98));
-        button3.setBackground(new Color(99, 98, 98));
-        button4.setBackground(new Color(99, 98, 98));
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 12);
+        Color cor = new Color(255, 255, 255);
 
         button1.setBorderPainted(false);
         button1.setFocusPainted(false);
+        button1.setFont(font);
+        button1.setForeground(cor);
+        button1.setBackground(new Color(99, 98, 98));
+        
+
 
         button2.setBorderPainted(false);
         button2.setFocusPainted(false);
+        button2.setFont(font);
+        button2.setForeground(cor);
+        button2.setBackground(new Color(99, 98, 98));
 
         button3.setBorderPainted(false);
         button3.setFocusPainted(false);
-        
-        button4.setBorderPainted((false));
-        button4.setFocusCycleRoot(false);
+        button3.setFont(font);
+        button3.setForeground(cor);
+        button3.setBackground(new Color(99, 98, 98));
+
+        button4.setBorderPainted(false);
+        button4.setFocusPainted(false);
+        button4.setFont(font);
+        button4.setForeground(cor);
+        button4.setBackground(new Color(99, 98, 98));
 
         jframe.add(jPanel);
         return jframe;
