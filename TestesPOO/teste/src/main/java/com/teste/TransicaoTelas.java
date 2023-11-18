@@ -1,5 +1,6 @@
 package com.teste;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,9 @@ public class TransicaoTelas extends JFrame {
     private CardLayout cardLayout;
 
     public TransicaoTelas() {
+        ImageIcon icon = new ImageIcon("TestesPOO\\teste\\src\\main\\java\\com\\teste\\Images\\TremBase.png");
+        setIconImage(icon.getImage());
+
         setTitle("Exemplo de Transição de Telas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 600);
