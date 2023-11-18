@@ -46,7 +46,7 @@ public class MenuPrincipal {
         jframe.setResizable(false);
 
         // Carregar o ícone da aplicação
-        ImageIcon icon = new ImageIcon("src\\main\\java\\com\\example\\View\\Images\\TremIcon.png");
+        ImageIcon icon = new ImageIcon("demo\\src\\main\\java\\com\\example\\View\\Images\\TremIcon.png");
 
         // Definir o ícone para o JFrame
         jframe.setIconImage(icon.getImage());
@@ -60,7 +60,8 @@ public class MenuPrincipal {
         panelPrincipal.setPreferredSize(new Dimension(400, 575));
 
         // Carregando a imagem a partir do caminho específico
-        ImageIcon imageIcon = new ImageIcon("src\\main\\java\\com\\example\\View\\Images\\TremIcon.png");
+        ImageIcon imageIcon = new ImageIcon("demo\\src\\main\\java\\com\\example\\View\\Images\\TremIcon.png");
+        
         Image image = imageIcon.getImage();
         JLabel labelImagem = new JLabel(new ImageIcon(image));
 

@@ -14,7 +14,7 @@ public class CriaTrem {
         labelCriarTrem.setHorizontalAlignment(SwingConstants.CENTER);
 
         // Carregar a imagem de um arquivo local
-        ImageIcon icon = new ImageIcon("src\\main\\java\\com\\example\\View\\Images\\TremIcon.png");
+        ImageIcon icon = new ImageIcon("demo\\src\\main\\java\\com\\example\\View\\Images\\TremIcon.png");
         labelCriarTrem.setIcon(icon);
 
         panelCriarTrem.add(labelCriarTrem, BorderLayout.CENTER);
