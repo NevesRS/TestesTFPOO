@@ -74,8 +74,11 @@ public class TransicaoTelas extends JFrame {
         });
 
         // Adicione os itens de menu à barra de menu
+        menuBar.add(Box.createHorizontalStrut(110));
         menuBar.add(criarTremMenuItem);
+        menuBar.add(Box.createHorizontalStrut(110));
         menuBar.add(editarTremMenuItem);
+        menuBar.add(Box.createHorizontalStrut(110));
         menuBar.add(listarTremMenuItem);
 
         // Defina a barra de menu para a janela
