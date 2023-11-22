@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class EditarTrem extends JPanel {
-    public EditarTrem() {
+    public EditarTrem(ListarTrem listarTrem) {
         setBackground(new Color(63, 55, 55));
         setPreferredSize(new Dimension(400, 575));
         setLayout(new GridBagLayout());
@@ -24,6 +24,8 @@ public class EditarTrem extends JPanel {
         JLabel labelID = new JLabel("Pesquise um ID:");
         labelID.setForeground(Color.white);
         add(labelID, gbc);
+
+        // CRIAR ACTION LISTENER PARA PESQUISAR O ID E SETA-LO COMO O EDITAVEL
 
         gbc.gridy++;
         JTextField textFieldID = new JTextField(18);
@@ -58,6 +60,9 @@ public class EditarTrem extends JPanel {
         gbc.gridy++;
         add(button2, gbc);
 
+        //ADICIONAR ACTIONLISTENER PARA AUMENTAR O VALOR DE LOCOMOTIVAS EM 1 NO ID DA PESQUISA
+        // RECEBE O ID
+
         JButton button3 = new JButton("Adicionar vagão");
         button3.setPreferredSize(new Dimension(200, 35));
         button3.setBorderPainted(false);
@@ -67,6 +72,9 @@ public class EditarTrem extends JPanel {
         button3.setBackground(new Color(99, 98, 98));
         gbc.gridy++;
         add(button3, gbc);
+
+        //ADICIONAR ACTIONLISTENER PARA AUMENTAR O VALOR DE VAGÇIES EM 1 NO ID DA PESQUISA
+        // RECEBE O ID
 
         gbc.gridy++;
         JLabel labelDis = new JLabel("Disposição:");
@@ -81,6 +89,9 @@ public class EditarTrem extends JPanel {
         JScrollPane scrollPane = new JScrollPane(textAreaDis);
         scrollPane.setPreferredSize(new Dimension(200, 100)); // Tamanho do scroll
         add(scrollPane, gbc);
+
+        //ADICIONAR O MÉTODO TOSTRING DO ID QUE FOI PESQUISADO, ATUALIZA-LO TODA VEZ QUE CLICAMOS NOS BOTÕES DE ADICIONAR
+        // RECEBE O ID
     }
 
     public void setArrayLocomotivas(Object object) {

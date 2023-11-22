@@ -29,11 +29,11 @@ public class ListarTrem extends JPanel {
         for (int i = 0; i < 6; i++) {
             arrayLocomotivas.add(new Locomotiva(i, 1000, 10, null));
         }
-        for (int i = 0; i < 5; i++) {
-            ArrayList<Carro> carro = new ArrayList<Carro>();
-            carro.add(arrayLocomotivas.get(i));
-            arrayComposicao.add(new Composicao(i, carro));
-        }
+        // for (int i = 0; i < 5; i++) {
+        //     ArrayList<Carro> carro = new ArrayList<Carro>();
+        //     carro.add(arrayLocomotivas.get(i));
+        //     arrayComposicao.add(new Composicao(i, carro));
+        // }
 
         setLayout(new BorderLayout());
         //JPanel contentPanel = new JPanel(new GridBagLayout());
@@ -57,7 +57,7 @@ public class ListarTrem extends JPanel {
         add(scrollPane, BorderLayout.CENTER); // Adiciona o JScrollPane ao painel principal
     }
     public void addLine() {
-        addLine(contentPanel, gbc, arrayComposicao.size()-1);
+        addLine(contentPanel, gbc, 0);
     }
 
     private void addLine(JPanel contentPanel, GridBagConstraints gbc, int i) {
@@ -83,7 +83,7 @@ public class ListarTrem extends JPanel {
         JLabel labelVagoes = new JLabel("Vagões: " + numVagoes);
         JLabel labelLocomotivas = new JLabel("Locomotivas: " + numLocomotivas);
 
-        ImageIcon lixeiraIcon = new ImageIcon("TFPOO/src/main/java/com/teste/Images/IconLixeira.png");
+        ImageIcon lixeiraIcon = new ImageIcon("TF-POO\\TFPOO\\src\\main\\java\\com\\teste\\Images\\IconLixeira.png");
         JLabel labelLixeira = new JLabel(lixeiraIcon);
 
         labelLixeira.addMouseListener(new MouseAdapter() {
@@ -95,29 +95,32 @@ public class ListarTrem extends JPanel {
                 contentPanel.revalidate(); // Revalida o layout do contentPanel
                 revalidate(); // Atualiza o layout do ListarTrem
                 repaint(); // Redesenha o painel
-                if (getTrensDeletados() >= arrayComposicao.size()) {
-                    JLabel mensagem = new JLabel("Não há mais trens disponíveis");
-                    mensagem.setHorizontalAlignment(JLabel.CENTER);
-                    mensagem.setForeground(Color.RED);
 
-                    Box horizontalBox = Box.createHorizontalBox();
-                    horizontalBox.add(Box.createHorizontalGlue());
-                    horizontalBox.add(mensagem);
-                    horizontalBox.add(Box.createHorizontalGlue());
+                //ADICIONAR A LÓGICA DE REMOVER O TREM DA LISTA. (ATUALIZAR O ARRAY)
 
-                    JPanel messagePanel = new JPanel();
-                    messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
-                    messagePanel.add(Box.createVerticalGlue());
-                    messagePanel.add(horizontalBox);
-                    messagePanel.add(Box.createVerticalGlue());
-                    messagePanel.setBackground(new Color(63, 55, 55));
+                // if (getTrensDeletados() >= arrayComposicao.size()) {
+                //     JLabel mensagem = new JLabel("Não há mais trens disponíveis");
+                //     mensagem.setHorizontalAlignment(JLabel.CENTER);
+                //     mensagem.setForeground(Color.RED);
 
-                    contentPanel.add(messagePanel, gbc);
+                //     Box horizontalBox = Box.createHorizontalBox();
+                //     horizontalBox.add(Box.createHorizontalGlue());
+                //     horizontalBox.add(mensagem);
+                //     horizontalBox.add(Box.createHorizontalGlue());
 
-                contentPanel.revalidate(); // Revalida o layout do contentPanel
-                    revalidate(); // Atualiza o layout do ListarTrem
-                    repaint(); // Redesenha o painel
-                }
+                //     JPanel messagePanel = new JPanel();
+                //     messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
+                //     messagePanel.add(Box.createVerticalGlue());
+                //     messagePanel.add(horizontalBox);
+                //     messagePanel.add(Box.createVerticalGlue());
+                //     messagePanel.setBackground(new Color(63, 55, 55));
+
+                //     contentPanel.add(messagePanel, gbc);
+
+                // contentPanel.revalidate(); // Revalida o layout do contentPanel
+                //     revalidate(); // Atualiza o layout do ListarTrem
+                //     repaint(); // Redesenha o painel
+                // }
             }
         });
 

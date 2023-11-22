@@ -23,7 +23,7 @@ public class TransicaoTelas extends JFrame {
     public TransicaoTelas() {
         condicoesIniciais();
 
-        ImageIcon icon = new ImageIcon("TFPOO/src/main/java/com/teste/Images/TremBase.png");
+        ImageIcon icon = new ImageIcon("TF-POO\\TFPOO\\src\\main\\java\\com\\teste\\Images\\TremBase.png");
         setIconImage(icon.getImage());
 
         setTitle("Gerenciador de Trens");
@@ -38,7 +38,7 @@ public class TransicaoTelas extends JFrame {
 
         ListarTrem listarTrem = new ListarTrem();
         CriarTrem criarTrem = new CriarTrem(listarTrem);
-        EditarTrem editarTrem = new EditarTrem();
+        EditarTrem editarTrem = new EditarTrem(listarTrem);
 
         criarTrem.setArrayComposicao(listarTrem.getArrayComposicao());
         editarTrem.setArrayComposicao(listarTrem.getArrayComposicao());
@@ -104,17 +104,17 @@ public class TransicaoTelas extends JFrame {
     }
 
     private void condicoesIniciais(){
-        for (int i = 0; i < 6; i++) {
-            arrayVagao.add(new Vagao(i, 200, null));
-        }
-        for (int i = 0; i < 6; i++) {
-            arrayLocomotivas.add(new Locomotiva(i, 1000, 10, null));
-        }
-        for (int i = 0; i < 5; i++) {
-            ArrayList<Carro> carro = new ArrayList<Carro>();
-            carro.add(arrayLocomotivas.get(i));
-            arrayComposicao.add(new Composicao(i, carro));
-        }
+        // for (int i = 0; i < 6; i++) {
+        //     arrayVagao.add(new Vagao(i, 200, null));
+        // }
+        // for (int i = 0; i < 6; i++) {
+        //     arrayLocomotivas.add(new Locomotiva(i, 1000, 10, null));
+        // }
+        // for (int i = 0; i < 5; i++) {
+        //     ArrayList<Carro> carro = new ArrayList<Carro>();
+        //     carro.add(arrayLocomotivas.get(i));
+        //     arrayComposicao.add(new Composicao(i, carro));
+        // }
     }
 
     public static void main(String[] args) {
