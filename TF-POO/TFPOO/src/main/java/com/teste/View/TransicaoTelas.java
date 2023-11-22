@@ -23,22 +23,22 @@ public class TransicaoTelas extends JFrame {
     public TransicaoTelas() {
         condicoesIniciais();
 
-        ImageIcon icon = new ImageIcon("TFPOO\\src\\main\\java\\com\\teste\\Images\\TremBase.png");
+        ImageIcon icon = new ImageIcon("TFPOO/src/main/java/com/teste/Images/TremBase.png");
         setIconImage(icon.getImage());
 
         setTitle("Gerenciador de Trens");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 600);
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
 
         cards = new JPanel(new FlowLayout(FlowLayout.CENTER));
         cardLayout = new CardLayout();
         cards.setLayout(cardLayout);
 
-        CriarTrem criarTrem = new CriarTrem();
-        EditarTrem editarTrem = new EditarTrem();
         ListarTrem listarTrem = new ListarTrem();
+        CriarTrem criarTrem = new CriarTrem(listarTrem);
+        EditarTrem editarTrem = new EditarTrem();
 
         criarTrem.setArrayComposicao(listarTrem.getArrayComposicao());
         editarTrem.setArrayComposicao(listarTrem.getArrayComposicao());

@@ -17,12 +17,14 @@ public class CriarTrem extends JPanel {
     ArrayList<Vagao> arrayVagao = new ArrayList<Vagao>();
     ArrayList<Composicao> arrayComposicao = new ArrayList<Composicao>();
     // private TransicaoTelas transicaoTelas = new TransicaoTelas();
-    public CriarTrem() {
+    //ListarTrem listarTrem;
+    public CriarTrem(ListarTrem listarTrem) {
+        //this.listarTrem = listarTrem;
         setBackground(new Color(63, 55, 55));
         setPreferredSize(new Dimension(400, 575));
         setLayout(new GridBagLayout());
 
-        ImageIcon icon = new ImageIcon("TFPOO\\src\\main\\java\\com\\teste\\Images\\TremIcon.png");
+        ImageIcon icon = new ImageIcon("TFPOO/src/main/java/com/teste/Images/TremIcon.png");
         JLabel labelImagem = new JLabel(icon);
         labelImagem.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -73,6 +75,7 @@ public class CriarTrem extends JPanel {
                     ArrayList<Carro> carro = new ArrayList<Carro>();
                     carro.add(arrayLocomotivas.get(0));
                     arrayComposicao.add(new Composicao(Integer.parseInt(id), carro));
+                    listarTrem.addLine();
                     arrayLocomotivas.remove(0);
                     System.out.println(carro);
                 } else {
